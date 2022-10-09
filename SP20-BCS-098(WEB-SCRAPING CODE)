@@ -1,0 +1,10 @@
+import pandas as pd
+from bs4 import BeautifulSoup
+import requests
+response = requests.get("https://www.bugatti.com/")
+soup = BeautifulSoup(response.content)
+soup.find("section",id="c1303")
+soup.find("table")
+soup.findAll("a")
+soup = BeautifulSoup(response.content,'html5lib')
+print(soup.prettify())
