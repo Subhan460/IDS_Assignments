@@ -1,0 +1,11 @@
+import geopandas as gpd
+import pandas as pd
+from google.colab import drive
+drive.mount('/content/drive')
+df = pd.read_csv('/content/drive/My Drive/drone-strikes-dataset.csv')
+world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+dronesmap = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(x=df.Longitude, y=df.Latitude))
+dronesmap.plot()
+displaymap = dronesmap.set_crs(epsg=4326)
+displaymap.crs
+displaymap.explore()
